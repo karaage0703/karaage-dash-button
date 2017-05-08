@@ -1,4 +1,4 @@
-#!/bin/bash -xve
+#!/bin/bash -e
 
 pip_install(){
 	# for dasher
