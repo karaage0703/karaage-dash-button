@@ -1,0 +1,8 @@
+{"buttons":[
+  {
+    "name": "Karaage Dash Button",
+    "address": "34:d2:70:xx:xx:xx",
+    "url": "http://192.168.xxx.xxx:10080/call",
+    "method": "GET"
+  }
+]}
