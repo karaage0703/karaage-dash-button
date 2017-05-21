@@ -1,8 +1,20 @@
 {"buttons":[
   {
-    "name": "Karaage Dash Button",
-    "address": "34:d2:70:xx:xx:xx",
-    "url": "http://192.168.xxx.xxx:10080/call",
+    "name": "Yakan Dash Button",
+    "address": "xx:xx:xx:xx:xx:xx",
+    "url": "http://192.168.xx.xx:10080/call",
+    "method": "GET"
+  },
+  {
+    "name": "Ofuro Dash Button",
+    "address": "xx:xx:xx:xx:xx:xx",
+    "url": "http://192.168.xx.xx:10081/call",
+    "method": "GET"
+  },
+  {
+    "name": "Roomba Dash Button",
+    "address": "xx:xx:xx:xx:xx:xx",
+    "url": "http://192.168.xx.xx:10082/call",
     "method": "GET"
   }
 ]}

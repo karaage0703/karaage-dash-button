@@ -1,8 +1,15 @@
 #!/bin/bash -e
+file=node_latest_armhf.deb
+dir=dasher
 
 pip_install(){
 	# for dasher
 	sudo pip install bottle
+	# for twitter
+	sudo pip install twython
+	sudo pip install requests_oauthlib
+	# for slack
+	sudo pip install slackweb
 }
 
 dasher_install(){
@@ -10,9 +17,18 @@ dasher_install(){
 	sudo apt-get install -y libpcap-dev
 	sudo apt-get install -y npm
 	sudo apt-get install -y node
-	wget http://node-arm.herokuapp.com/node_latest_armhf.deb 
-	sudo dpkg -i node_latest_armhf.deb
-	git clone https://github.com/maddox/dasher.git
+	if [ -e $file ]; then
+		echo "$file found."
+	else
+		wget http://node-arm.herokuapp.com/node_latest_armhf.deb 
+		sudo dpkg -i node_latest_armhf.deb
+	fi
+
+	if [ -e $dir ]; then
+		echo "$dir found."
+	else
+		git clone https://github.com/maddox/dasher.git
+	fi
 	cd dasher
 	sudo npm install
 }
