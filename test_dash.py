@@ -26,4 +26,4 @@ def control_call():
   th.start()
   return control_response_json("call")
 
-run(host='192.168.10.123', port=10080, debug=True)
+run(host='192.168.xx.xx', port=10080, debug=True)
