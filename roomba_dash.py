@@ -2,16 +2,16 @@
 from bottle import route,run,request,response,hook
 import threading
 import json
-import ConfigParser
-from os import path
-import datetime
+import subprocess
 
 class KaraageDashThread(threading.Thread):
   def __init__(self):
     threading.Thread.__init__(self)
 
   def run(self):
-    print("Test OK")
+    print("dash roomba")
+    cmd='rostopic pub /set_clean_mode ca_msgs/CleanMode "mode: 1"'
+    subprocess.call(cmd, shell=True)
 
 @hook('after_request')
 def header_json():
@@ -28,8 +28,4 @@ def control_call():
   th.start()
   return control_response_json("call")
 
-config_file = ConfigParser.SafeConfigParser()
-config_file_path = path.dirname(path.abspath( __file__ )) + "/.config"
-config_file.read(config_file_path)
-hosturl = config_file.get("settings","hosturl")
-run(host=hosturl, port=10080, debug=True)
+run(host='192.168.xx.xx', port=10082, debug=True)
