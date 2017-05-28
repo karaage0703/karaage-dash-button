@@ -4,7 +4,6 @@ import threading
 import json
 import ConfigParser
 from os import path
-import datetime
 
 class KaraageDashThread(threading.Thread):
   def __init__(self):
