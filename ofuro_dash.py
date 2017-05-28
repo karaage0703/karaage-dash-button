@@ -12,11 +12,7 @@ class KaraageDashThread(threading.Thread):
 
   def run(self):
     print("dash ofuro")
-    config_file = ConfigParser.SafeConfigParser()
-    config_file_path = path.dirname(path.abspath( __file__ )) + "/.slack_config"
-    config_file.read(config_file_path)
-
-    slackURL = config_file.get("settings","slackURL")
+    slackURL = config_file.get("slack_settings","slackURL")
     slack = slackweb.Slack(url=slackURL)
     slack.notify(text="おふろの準備して！")
 
@@ -35,4 +31,8 @@ def control_call():
   th.start()
   return control_response_json("call")
 
-run(host='192.168.xx.xx', port=10081, debug=True)
+config_file = ConfigParser.SafeConfigParser()
+config_file_path = path.dirname(path.abspath( __file__ )) + "/.config"
+config_file.read(config_file_path)
+hosturl = config_file.get("settings","hosturl")
+run(host=hosturl, port=10082, debug=True)

@@ -14,14 +14,11 @@ class KaraageDashThread(threading.Thread):
   def run(self):
     print("dash yakan")
     tweet_str = "@karaage0703 やかん沸かして！" + datetime.datetime.today().strftime("%Y/%m/%d %H:%M:%S")
-    config_file = ConfigParser.SafeConfigParser()
-    config_file_path = path.dirname(path.abspath( __file__ )) + "/.twitter_config"
-    config_file.read(config_file_path)
 
-    consumerKey = config_file.get("settings","consumerKey")
-    consumerSecret = config_file.get("settings","consumerSecret")
-    accessToken = config_file.get("settings","accessToken")
-    accessSecret = config_file.get("settings","accessSecret")
+    consumerKey = config_file.get("twitter_settings","consumerKey")
+    consumerSecret = config_file.get("twitter_settings","consumerSecret")
+    accessToken = config_file.get("twitter_settings","accessToken")
+    accessSecret = config_file.get("twitter_settings","accessSecret")
 
     api = twython.Twython(app_key=consumerKey,
                   app_secret=consumerSecret,
@@ -48,4 +45,8 @@ def control_call():
   th.start()
   return control_response_json("call")
 
-run(host='192.168.xx.xx', port=10080, debug=True)
+config_file = ConfigParser.SafeConfigParser()
+config_file_path = path.dirname(path.abspath( __file__ )) + "/.config"
+config_file.read(config_file_path)
+hosturl = config_file.get("settings","hosturl")
+run(host=hosturl, port=10081, debug=True)
