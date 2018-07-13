@@ -38,6 +38,7 @@ START_TIME=`date +%s`
 # change directory here
 cd `dirname $0`
 
+sudo apt-get update
 pip_install
 dasher_install
 
